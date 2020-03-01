@@ -73,9 +73,9 @@ end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
     if not lang then
-  return '*Group has been added*'..msg_caption
+  return '*Group has been added*'
 else
-  return 'گروه با موفقیت به لیست گروه های مدیریتی ربات افزوده شد'..msg_caption
+  return 'گروه با موفقیت به لیست گروه های مدیریتی ربات افزوده شد'
 end
 end
 
@@ -204,7 +204,7 @@ local lang = redis:get(hash)
     local i = 1
   if not data[tostring(msg.to.id)] then
 if not lang then
-    return "_Group is not added_"..msg_caption
+    return "_Group is not added_"
 else
 return "گروه به لیست گروه های مدیریتی ربات اضافه نشده است"
   end
@@ -3053,9 +3053,9 @@ if ((matches[1] == 'newlink' and not Clang) or (matches[1] == "لینک جدید
 					administration[tostring(msg.to.id)]['settings']['linkgp'] = nil
 					save_data(_config.moderation.data, administration)
        if not lang then
-       return tdcli.sendMessage(msg.to.id, msg.id, 1, "_Bot is not group creator_\n_set a link for group with using_ /setlink"..msg_caption, 1, 'md')
+       return tdcli.sendMessage(msg.to.id, msg.id, 1, "_Bot is not group creator_\n_set a link for group with using_ /setlink", 1, 'md')
        elseif lang then
-       return tdcli.sendMessage(msg.to.id, msg.id, 1, "_ربات سازنده گروه نیست_\n_با دستور_ setlink/ _لینک جدیدی برای گروه ثبت کنید_"..msg_caption, 1, 'md')
+       return tdcli.sendMessage(msg.to.id, msg.id, 1, "_ربات سازنده گروه نیست_\n_با دستور_ setlink/ _لینک جدیدی برای گروه ثبت کنید_", 1, 'md')
     end
 				else
 					administration[tostring(msg.to.id)]['settings']['linkgp'] = data.invite_link_
@@ -3101,9 +3101,9 @@ if ((matches[1] == 'newlink' and not Clang) or (matches[1] == "لینک جدید
       end
       end
      if not lang then
-       text = "<b>Group Link :</b>\n"..linkgp..msg_caption
+       text = "<b>Group Link :</b>\n"..linkgp
      else
-      text = "<b>لینک گروه :</b>\n"..linkgp..msg_caption
+      text = "<b>لینک گروه :</b>\n"..linkgp
          end
         return tdcli.sendMessage(chat, msg.id, 1, text, 1, 'html')
      end
@@ -3117,9 +3117,9 @@ if ((matches[1] == 'newlink' and not Clang) or (matches[1] == "لینک جدید
       end
       end
      if not lang then
-     tdcli.sendMessage(user, "", 1, "<b>Group Link "..msg.to.title.." :</b>\n"..linkgp..msg_caption, 1, 'html')
+     tdcli.sendMessage(user, "", 1, "<b>Group Link "..msg.to.title.." :</b>\n"..linkgp, 1, 'html')
      else
-      tdcli.sendMessage(user, "", 1, "<b>لینک گروه "..msg.to.title.." :</b>\n"..linkgp..msg_caption, 1, 'html')
+      tdcli.sendMessage(user, "", 1, "<b>لینک گروه "..msg.to.title.." :</b>\n"..linkgp, 1, 'html')
          end
       if not lang then
         return "*Group Link Was Send In Your Private Message*"
@@ -3139,9 +3139,9 @@ if ((matches[1] == 'newlink' and not Clang) or (matches[1] == "لینک جدید
   if ((matches[1] == "rules" and not Clang) or (matches[1] == "قوانین" and Clang)) then
  if not data[tostring(chat)]['rules'] then
    if not lang then
-     rules = "ℹ️ The Default Rules :\n1⃣ No Flood.\n2⃣ No Spam.\n3⃣ No Advertising.\n4⃣ Try to stay on topic.\n5⃣ Forbidden any racist, sexual, homophobic or gore content.\n➡️ Repeated failure to comply with these rules will cause ban."..msg_caption
+     rules = "ℹ️ The Default Rules :\n1⃣ No Flood.\n2⃣ No Spam.\n3⃣ No Advertising.\n4⃣ Try to stay on topic.\n5⃣ Forbidden any racist, sexual, homophobic or gore content.\n➡️ Repeated failure to comply with these rules will cause ban."
     elseif lang then
-       rules = "ℹ️ قوانین پپیشفرض:\n1⃣ ارسال پیام مکرر ممنوع.\n2⃣ اسپم ممنوع.\n3⃣ تبلیغ ممنوع.\n4⃣ سعی کنید از موضوع خارج نشید.\n5⃣ هرنوع نژاد پرستی, شاخ بازی و پورنوگرافی ممنوع .\n➡️ از قوانین پیروی کنید, در صورت عدم رعایت قوانین اول اخطار و در صورت تکرار مسدود."..msg_caption
+       rules = "ℹ️ قوانین پپیشفرض:\n1⃣ ارسال پیام مکرر ممنوع.\n2⃣ اسپم ممنوع.\n3⃣ تبلیغ ممنوع.\n4⃣ سعی کنید از موضوع خارج نشید.\n5⃣ هرنوع نژاد پرستی, شاخ بازی و پورنوگرافی ممنوع .\n➡️ از قوانین پیروی کنید, در صورت عدم رعایت قوانین اول اخطار و در صورت تکرار مسدود."
  end
         else
      rules = "*Group Rules :*\n"..data[tostring(chat)]['rules']
@@ -3386,20 +3386,20 @@ if (matches[1]:lower() == "setlang" and not Clang) and is_owner(msg) then
 local hash = "gp_lang:"..msg.to.id
 if matches[2] == "fa" then
 redis:set(hash, true)
-return "*زبان گروه تنظیم شد به : فارسی*"..msg_caption
+return "*زبان گروه تنظیم شد به : فارسی*"
   elseif matches[2] == "en" then
  redis:del(hash)
-return "_Group Language Set To:_ EN"..msg_caption
+return "_Group Language Set To:_ EN"
 end
 end
 if (matches[1] == 'زبان' and Clang) and is_owner(msg) then
 local hash = "gp_lang:"..msg.to.id
 if matches[2] == "فارسی" then
 redis:set(hash, true)
-return "*زبان گروه تنظیم شد به : فارسی*"..msg_caption
+return "*زبان گروه تنظیم شد به : فارسی*"
   elseif matches[2] == "انگلیسی" then
  redis:del(hash)
-return "_Group Language Set To:_ EN"..msg_caption
+return "_Group Language Set To:_ EN"
 end
 end
 
@@ -3408,9 +3408,9 @@ local hash = "cmd_lang:"..msg.to.id
 if matches[2] == "fa" then
 redis:set(hash, true)
    if lang then
-return "*زبان دستورات ربات تنظیم شد به : فارسی*"..msg_caption
+return "*زبان دستورات ربات تنظیم شد به : فارسی*"
 else
-return "_Bot Commands Language Set To:_ Fa"..msg_caption
+return "_Bot Commands Language Set To:_ Fa"
 end
 end
 end
@@ -3419,9 +3419,9 @@ if (matches[1]:lower() == "دستورات انگلیسی" and Clang) and is_owne
 local hash = "cmd_lang:"..msg.to.id
 redis:del(hash)
    if lang then
-return "*زبان دستورات ربات تنظیم شد به : انگلیسی*"..msg_caption
+return "*زبان دستورات ربات تنظیم شد به : انگلیسی*"
 else
-return "_Bot Commands Language Set To:_ EN"..msg_caption
+return "_Bot Commands Language Set To:_ EN"
 end
 end
 
@@ -3735,7 +3735,7 @@ _این به این معناست که فقط مدیران/مالکان گروه 
 _موفق باشید_ *;)*
 ]]
 end
-return text..msg_caption
+return text
 end
 
 if (matches[1] == "راهنما" and Clang) and is_mod(msg) then
@@ -4051,7 +4051,7 @@ _این راهنما فقط برای مدیران/مالکان گروه میبا
 این به این معناست که فقط مدیران/مالکان گروه میتوانند از دستورات بالا استفاده کنند!_
 *موفق باشید ;)*]]
 end
-return text..msg_caption
+return text
 end
 --------------------- Welcome -----------------------
 	if ((matches[1] == "welcome" and not Clang) or (matches[1] == "خوشامد" and Clang)) and is_mod(msg) then
@@ -4097,9 +4097,9 @@ end
 		data[tostring(chat)]['setwelcome'] = matches[2]
 	    save_data(_config.moderation.data, data)
        if not lang then
-		return "_Welcome Message Has Been Set To :_\n*"..matches[2].."*\n\n*You can use :*\n_{gpname} Group Name_\n_{rules} ➣ Show Group Rules_\n_{time} ➣ Show time english _\n_{date} ➣ Show date english _\n_{timefa} ➣ Show time persian _\n_{datefa} ➣ show date persian _\n_{name} ➣ New Member First Name_\n_{username} ➣ New Member Username_"..msg_caption
+		return "_Welcome Message Has Been Set To :_\n*"..matches[2].."*\n\n*You can use :*\n_{gpname} Group Name_\n_{rules} ➣ Show Group Rules_\n_{time} ➣ Show time english _\n_{date} ➣ Show date english _\n_{timefa} ➣ Show time persian _\n_{datefa} ➣ show date persian _\n_{name} ➣ New Member First Name_\n_{username} ➣ New Member Username_"
        else
-		return "_پیام خوشآمد گویی تنظیم شد به :_\n*"..matches[2].."*\n\n*شما میتوانید از*\n_{gpname} نام گروه_\n_{rules} ➣ نمایش قوانین گروه_\n_{time} ➣ ساعت به زبان انگلیسی _\n_{date} ➣ تاریخ به زبان انگلیسی _\n_{timefa} ➣ ساعت به زبان فارسی _\n_{datefa} ➣ تاریخ به زبان فارسی _\n_{name} ➣ نام کاربر جدید_\n_{username} ➣ نام کاربری کاربر جدید_\n_استفاده کنید_"..msg_caption
+		return "_پیام خوشآمد گویی تنظیم شد به :_\n*"..matches[2].."*\n\n*شما میتوانید از*\n_{gpname} نام گروه_\n_{rules} ➣ نمایش قوانین گروه_\n_{time} ➣ ساعت به زبان انگلیسی _\n_{date} ➣ تاریخ به زبان انگلیسی _\n_{timefa} ➣ ساعت به زبان فارسی _\n_{datefa} ➣ تاریخ به زبان فارسی _\n_{name} ➣ نام کاربر جدید_\n_{username} ➣ نام کاربری کاربر جدید_\n_استفاده کنید_"
         end
      end
 	end
@@ -4308,4 +4308,3 @@ patterns ={
 run=run,
 pre_process = pre_process
 }
---end groupmanager.lua #beyond team#
