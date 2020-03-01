@@ -1,8 +1,3 @@
-
---Begin Fun.lua By @BeyondTeam
---Special Thx To @To0fan
---------------------------------
-
 local function run_bash(str)
     local cmd = io.popen(str)
     local result = cmd:read('*all')
