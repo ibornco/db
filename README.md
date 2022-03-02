@@ -92,7 +92,7 @@ tmux
 
 ## Developers
 
-[SoLiD](https://github.com/solid021) ([Telegram](https://telegram.me/SoLiD))
+[iBorn](https://github.com/solid021) ([Telegram](https://telegram.me/iborn))
 
 [To0fan](https://github.com/To0fan) ([Telegram](https://telegram.me/ToOfan))
 
